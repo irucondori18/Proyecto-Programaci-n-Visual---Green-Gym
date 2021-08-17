@@ -1,0 +1,106 @@
+<h1 class="title fw-bolder animate__animated animate__rubberBand">
+  Bienvenidos a
+  <br />
+  <span class="font">
+    <span class="green fst-italic">Green </span>Gym
+    <img style="width: 85px" src="../../../assets/images/pesa.png" alt="" />
+  </span>
+</h1>
+<section id="cont-slid">
+  <div
+    id="carouselExampleControls"
+    class="carousel carousel-fade slide"
+    data-bs-ride="carousel"
+    data-bs-pause="false"
+  >
+    <div class="carousel-inner">
+      <div
+        *ngFor="let slid of sliders"
+        [ngClass]="{ active: slid == sliders[0] }"
+        class="carousel-item"
+        data-bs-interval="2500"
+      >
+        <img src="{{ slid.img }}" class="d-block w-100" alt="..." />
+        <div class="carousel-caption desc d-none d-md-block">
+          <h5>{{ slid.descripcion }}</h5>
+        </div>
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleControls"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleControls"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</section>
+<section class="aboutus">
+  <h3 class="aboutus-title">Sobre nosotros</h3>
+  <div class="aboutus-description mb-3">
+    <p>
+      En Green Gym nuestrar prioridad sos vos! Te ayudamos a lograr todas tus
+      metas.
+    </p>
+    <p>
+      Nuestros entrenadores son expertos en el cuidado de tu bienestar fisico.
+    </p>
+    <p>
+      Tenemos diferentes planes para que puedas elegir el que se adapte mejor a
+      tus necesidades. Con cualquiera de ellos contaras con acceso a nuestra
+      plataforma exclusiva, en donde podras visualizar tus estadisticas
+      personales:
+    </p>
+    <ul>
+      <li>Tus pagos</li>
+      <li>Tus rutinas</li>
+      <li>Tu asistencia</li>
+      <li>Y mucho mas !</li>
+    </ul>
+  </div>
+  <h3 class="aboutus-title">Nuestros Planes</h3>
+  <div class="table-responsive text">
+    <table class="table table-hover">
+      <thead>
+        <tr class="text">
+          <th scope="col">Tipo de Plan</th>
+          <th scope="col">Frecuencia</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col">Costo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let plan of planes" class="text">
+          <th scope="row">{{ plan.tipo }}</th>
+          <td>{{ plan.frecuencia }}</td>
+          <td>Acceso a nuestra Plataforma</td>
+          <td>Entrenamiento Personalizado</td>
+          <td>{{ plan.costo | currency: "ARS $" }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="w-75 m-auto">
+    <h4 class="aboutus-title">Nos Encontramos en:</h4>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3639.641746863042!2d-65.309142949779!3d-24.184293890698118!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x941b0f41c8461355%3A0x428152c0550fd616!2sGral.%20Alvear%2C%20San%20Salvador%20de%20Jujuy%2C%20Jujuy!5e0!3m2!1ses-419!2sar!4v1623634065611!5m2!1ses-419!2sar"
+      width="100%"
+      height="450"
+      style="border: 0"
+      allowfullscreen=""
+      loading="lazy"
+    ></iframe>
+  </div>
+</section>

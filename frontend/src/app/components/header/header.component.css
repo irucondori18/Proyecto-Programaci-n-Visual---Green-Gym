@@ -1,0 +1,18 @@
+.header {
+  background-color: #2ec400;
+}
+.nav-link,
+.navbar-brand {
+  color: white;
+}
+
+.active-link {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #2ec400;
+  border-radius: 0 10px 0 10px;
+}
+.gym {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 0 10px 0 10px;
+  padding: 10px;
+}

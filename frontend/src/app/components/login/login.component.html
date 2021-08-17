@@ -1,0 +1,46 @@
+<div class="container-form">
+  <form class="form" name="form">
+    <h3 class="categorie mb-4 mt-0">Formulario de Ingreso</h3>
+    <!-- Formulario de login normal
+            <div class="mb-3">
+                <label for="correo" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" id="correo">
+            </div>
+            <div class="mb-3">
+                <label for="contraseña" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="contraseña">
+            </div>-->
+
+    <!-- Formulario de login diferente-->
+    <div class="align-items-center">
+      <div class="form-floating align-items-center col-8 offset-2 mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="usuario"
+          name="usuario"
+          [(ngModel)]="userform.usuario"
+          placeholder="Usuario"
+          required
+        />
+        <label for="usuario">Usuario</label>
+      </div>
+      <div class="form-floating align-items-center col-8 offset-2 mb-5">
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+          [(ngModel)]="userform.password"
+          placeholder="Contraseña"
+          required
+        />
+        <label for="password">Contraseña</label>
+      </div>
+    </div>
+    <div class="col-8 offset-5">
+      <button class="buttons btn btn-green text-center" type="button" (click)="login()">Ingresar</button>
+    </div>
+    <div class="alert-danger">{{msglogin}}</div>
+  </form>
+</div>

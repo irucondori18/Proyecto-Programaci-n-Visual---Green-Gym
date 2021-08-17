@@ -1,0 +1,108 @@
+<header class="header animate__animated animate__fadeInDown">
+  <nav class="p-0 navbar navbar-expand-lg fw-bolder">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img
+          style="width: 60px"
+          src="https://woodcreekathletic.net/files/2014/04/dumbbell.png"
+          alt=""
+        />
+        <span class="fst-italic"> GreenGym</span>
+      </a>
+      <div class="navbar-dark">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul
+          class="ms-auto navbar-nav mb-2 mb-lg-0"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <li class="nav-item">
+            <a
+              class="nav-link p-2"
+              routerLink="/home"
+              routerLinkActive="active-link"
+              >Inicio</a
+            >
+          </li>
+          <li
+            class="nav-item"
+            *ngIf="loginService.userLoggedIn() && perfil == 'entrenador'"
+          >
+            <a
+              class="nav-link p-2"
+              routerLink="/alumnos"
+              routerLinkActive="active-link"
+              >Alumnos</a
+            >
+          </li>
+          <li
+            class="nav-item"
+            *ngIf="loginService.userLoggedIn() && perfil == 'entrenador'"
+          >
+            <a
+              [routerLink]="['estadisticas']"
+              class="nav-link p-2"
+              routerLinkActive="active-link"
+              >Estadisticas</a
+            >
+          </li>
+          <li
+            class="nav-item"
+            *ngIf="loginService.userLoggedIn() && perfil == 'entrenador'"
+          >
+            <a
+              class="nav-link p-2"
+              routerLink="/configuracion"
+              routerLinkActive="active-link"
+              >Sitio Web</a
+            >
+          </li>
+          <li
+            class="nav-item"
+            *ngIf="loginService.userLoggedIn() && perfil == 'alumno'"
+          >
+            <a
+              class="nav-link p-2"
+              routerLink="/alumno"
+              routerLinkActive="active-link"
+              >Mi Progreso</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              *ngIf="!loginService.userLoggedIn()"
+              class="nav-link p-2"
+              routerLink="/login"
+              routerLinkActive="active-link"
+              >Login</a
+            >
+            <a
+              *ngIf="loginService.userLoggedIn()"
+              class="nav-link p-2"
+              routerLink="/login"
+              routerLinkActive="active-link"
+              (click)="logout()"
+              >Logout ({{ loginService.userLogged() }})</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

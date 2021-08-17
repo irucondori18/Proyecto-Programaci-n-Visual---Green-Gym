@@ -1,0 +1,53 @@
+.categorie {
+  background-color: rgb(63, 63, 63);
+  color: white;
+  text-align: center;
+  padding: 5px 0;
+  margin: 20px 0;
+}
+.main {
+  min-height: 80vh;
+}
+.estadisticas {
+  overflow: scroll;
+  width: 70%;
+  min-height: 400px;
+  margin: auto;
+}
+
+.btn-green {
+  background-color: #2ec400;
+  color: white;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+.btn-green:hover {
+  background-color: white;
+  border: 1px solid #2ec400;
+  color: #2ec400;
+}
+.active {
+  background-color: white;
+  border: 1px solid #2ec400 !important;
+  color: #2ec400 !important;
+}
+.btn-check:focus + .btn,
+.btn:focus {
+  box-shadow: none;
+  outline: none;
+}
+.cont {
+  color: rgb(63, 63, 63) !important;
+  border: none !important;
+}
+
+@media screen and (max-width: 600px) {
+  .estadisticas {
+    height: 100%;
+    width: 100%;
+  }
+  .grafic {
+    min-width: 500px;
+    min-height: 400px;
+  }
+}

@@ -1,0 +1,43 @@
+.title {
+  text-align: center;
+  margin-top: 15px;
+  color: rgb(63, 63, 63);
+  /* text-decoration: underline 4px #2ec400; */
+}
+.green {
+  color: #2ec400;
+}
+#cont-slid .carousel-inner img {
+  max-height: 80vh;
+  object-fit: cover;
+  object-position: top;
+  padding: 20px 0;
+  filter: grayscale(30%);
+}
+.aboutus-title {
+  background-color: rgb(63, 63, 63);
+  /* background-color: #2ec400; */
+  color: white;
+  text-align: center;
+  padding: 5px 0;
+  margin: 20px 0;
+}
+.text {
+  color: rgb(63, 63, 63);
+}
+.aboutus-description {
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+  /* border: 1px solid rgb(63, 63, 63);*/
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px;
+}
+.font {
+  font-family: "Charmonman", cursive;
+  font-size: 70px;
+}
+.desc {
+  background-color: rgba(63, 63, 63, 0.7);
+  border-radius: 5px;
+}

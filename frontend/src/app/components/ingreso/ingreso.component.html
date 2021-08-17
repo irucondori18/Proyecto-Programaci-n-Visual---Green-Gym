@@ -1,0 +1,1268 @@
+<main>
+  <section class="mt-4">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link active btn btn-green"
+          id="datos-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#datos"
+          type="button"
+          role="tab"
+          aria-controls="home"
+          aria-selected="true"
+        >
+          Alumno
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link btn btn-green"
+          id="pagos-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#pagos"
+          type="button"
+          role="tab"
+          aria-controls="pagos"
+          aria-selected="false"
+        >
+          Pagos
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link btn btn-green"
+          id="rutinas-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#rutinas"
+          type="button"
+          role="tab"
+          aria-controls="rutinas"
+          aria-selected="false"
+        >
+          Rutinas
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link btn btn-green"
+          id="progreso-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#progreso"
+          type="button"
+          role="tab"
+          aria-controls="progreso"
+          aria-selected="false"
+        >
+          Progreso
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link btn btn-green"
+          id="asistencias-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#asistencias"
+          type="button"
+          role="tab"
+          aria-controls="asistencias"
+          aria-selected="false"
+        >
+          Asistencias
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link btn btn-green"
+          id="usuario-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#usuario"
+          type="button"
+          role="tab"
+          aria-controls="usuario"
+          aria-selected="false"
+        >
+          Usuario
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link btn btn-red"
+          id="usuario-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#usuario"
+          type="button"
+          role="tab"
+          aria-controls="usuario"
+          aria-selected="false"
+          (click)="volver()"
+        >
+          VOLVER
+        </button>
+      </li>
+    </ul>
+    <div class="tab-content cont" id="myTabContent">
+      <div
+        class="tab-pane fade show active cont"
+        id="datos"
+        role="tabpanel"
+        aria-labelledby="datos-tab"
+      >
+        <!--          Datos del alumno     -->
+        <section>
+          <a
+            class="text-decoration-none"
+            data-bs-toggle="collapse"
+            href="#collapseDatos"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseExample"
+          >
+            <h3 class="categorie">Datos del Alumno</h3>
+          </a>
+          <div class="collapse show" id="collapseDatos">
+            <div class="col-md-10 offset-md-1 cuadro bg-light">
+              <br />
+              <form class="row g-3 col-10 offset-1" #modAluForm="ngForm">
+                <div class="col-md-6">
+                  <label for="" class="form-label">Apellido/s</label>
+                  <input type="text" class="form-control" id="" name="apellido" [(ngModel)]="alumno.apellido" 
+                  #apellidoAlumno="ngModel" minlength="3" required/>
+                  <div *ngIf="apellidoAlumno.invalid && (apellidoAlumno.touched || apellidoAlumno.dirty)" class="alert alert-danger">
+                    <div *ngIf="apellidoAlumno.errors.required"> El apellido es requerido </div>
+                    <div *ngIf="apellidoAlumno.errors.minlength"> Se requiere al menos {{apellidoAlumno.errors.minlength.requiredLength}} caracteres </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="" class="form-label">Nombre/s</label>
+                  <input type="text" class="form-control" id="" name="nombre" [(ngModel)]="alumno.nombre"
+                  #nombreAlumno="ngModel" minlength="3" required/>
+                  <div *ngIf="nombreAlumno.invalid && (nombreAlumno.touched || nombreAlumno.dirty)" class="alert alert-danger">
+                    <div *ngIf="nombreAlumno.errors.required"> El nombre es requerido </div>
+                    <div *ngIf="nombreAlumno.errors.minlength"> Se requiere al menos {{nombreAlumno.errors.minlength.requiredLength}} caracteres </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="" class="form-label">Fecha de nacimiento</label>
+                  <input type="date" class="form-control" id="" name="fechanac" [(ngModel)]="alumno.fechanac"
+                  #fechanacAlumno="ngModel" required/>
+                  <div *ngIf="fechanacAlumno.invalid && (fechanacAlumno.touched || fechanacAlumno.dirty)" class="alert alert-danger">
+                    <div *ngIf="fechanacAlumno.errors.required"> La fecha de nacimiento es requerida </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="" class="form-label">Número de DNI</label>
+                  <input type="number" class="form-control" id="" name="dni" [(ngModel)]="alumno.dni"
+                  #dniAlumno="ngModel" control-dni required/>
+                  <div *ngIf="dniAlumno.invalid && (dniAlumno.touched || dniAlumno.dirty)" class="alert alert-danger">
+                    <div *ngIf="dniAlumno.errors.controlDeDni"> Debe ingresar un número de 7 u 8 dígitos</div>
+                    <div *ngIf="dniAlumno.errors.required"> El DNI es requerido</div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="" class="form-label">Domicilio</label>
+                  <input type="text" class="form-control" id="" name="domicilio" [(ngModel)]="alumno.domicilio"
+                  #domicilioAlumno="ngModel" minlength="5" required/>
+                  <div *ngIf="domicilioAlumno.invalid && (domicilioAlumno.touched || domicilioAlumno.dirty)" class="alert alert-danger">
+                    <div *ngIf="domicilioAlumno.errors.required"> El domicilio es requerido </div>
+                    <div *ngIf="domicilioAlumno.errors.minlength"> Se requiere al menos {{domicilioAlumno.errors.minlength.requiredLength}} caracteres </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="" class="form-label">E-mail</label>
+                  <input type="email" class="form-control" id="" name="email" [(ngModel)]="alumno.email"
+                  #emailAlumno="ngModel" control-email required/>
+                  <div *ngIf="emailAlumno.invalid && (emailAlumno.touched || emailAlumno.dirty)" class="alert alert-danger">
+                    <div *ngIf="emailAlumno.errors.controlDeEmail"> Debe ingresar un mail con un formato similar a "ejemplo@correo.com.ar"</div>
+                    <div *ngIf="emailAlumno.errors.required"> El mail es requerido</div>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <label for="" class="form-label">Numero de Celular</label>
+                  <input type="tel" class="form-control" id="" name="celular" [(ngModel)]="alumno.celular"
+                  #celularAlumno="ngModel" control-celular required/>
+                  <div *ngIf="celularAlumno.invalid && (celularAlumno.touched || celularAlumno.dirty)" class="alert alert-danger">
+                    <div *ngIf="celularAlumno.errors.controlDeCelular"> Debe ingresar un celular con el formato "388-1234567"</div>
+                    <div *ngIf="celularAlumno.errors.required"> El celular es requerido</div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <label for="inputState" class="form-label">Tipo de Plan</label>
+                  <select class="form-select" name="plan" [(ngModel)]="alumno.plan"
+                  #planAlumno="ngModel" required>
+                    <option *ngFor="let p of planes" value="{{ p._id }}">{{p.tipo}} - {{p.frecuencia}}</option>
+                  </select>
+                  <div *ngIf="planAlumno.invalid && (planAlumno.touched || planAlumno.dirty)" class="alert alert-danger">
+                    <div *ngIf="planAlumno.errors.required"> El plan es requerido </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <label for="" class="form-label">Fecha de inicio</label>
+                  <input type="date" class="form-control" id="" name="fechainicio" [(ngModel)]="alumno.fechainicio"
+                  #fechainicioAlumno="ngModel" required/>
+                  <div *ngIf="fechainicioAlumno.invalid && (fechainicioAlumno.touched || fechainicioAlumno.dirty)" class="alert alert-danger">
+                    <div *ngIf="fechainicioAlumno.errors.required"> La fecha de inicio es requerida </div>
+                  </div>
+                </div>
+                <div class="col-12 buttons">
+                  <button type="button" class="btn btn-green" (click)="actualizarAlumno(modAluForm)" [disabled]="modAluForm.invalid">Modificar</button>
+                </div>
+              </form>
+              <br /><br />
+            </div>
+            <br />
+            <br />
+          </div>
+          
+        </section>
+      </div>
+      <div
+        class="tab-pane fade cont"
+        id="pagos"
+        role="tabpanel"
+        aria-labelledby="pagos-tab"
+      >
+        <!--                Datos de Pago       -->
+        <section>
+          <a
+            class="text-decoration-none"
+            data-bs-toggle="collapse"
+            href="#collapsePagos"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseExample"
+          >
+            <h3 class="categorie">Historial de Pagos</h3>
+          </a>
+          <div class="collapse show" id="collapsePagos">
+            <div class="text-center">
+              <button class="btn-green btn mt-2 mb-2" data-bs-toggle="modal"
+              data-bs-target="#modalAgregarPago" (click)="nuevoPago(pagoForm)">Agregar Pago</button>  
+            </div>
+            <!-- modal Agregar pago -->
+            <div class="modal fade" id="modalAgregarPago" tabindex="-1" aria-labelledby="modalLabelAgregarPago"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header text-white bg-dark">
+                        <h5 class="modal-title" id="modalLabelAgregarPago" *ngIf="accionPago=='new'">Nuevo Pago</h5>
+                        <h5 class="modal-title" id="modalLabelAgregarPago" *ngIf="accionPago=='update'">Modificar Pago</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid col-10 offset-1 mb-3">
+
+                          <form class="row g-3" #pagoForm="ngForm">
+                            <div class="col-md-6">
+                              <label for="" class="form-label">Monto</label>
+                              <input type="number" class="form-control" id="" name="pagomonto" [(ngModel)]="pago.monto" 
+                              #montoPago="ngModel" control-monto required/>
+                              <div *ngIf="montoPago.invalid && (montoPago.touched || montoPago.dirty)" class="alert alert-danger">
+                                <div *ngIf="montoPago.errors.controlDeMonto"> No se permiten números negativos ni más de dos decimales</div>
+                                <div *ngIf="montoPago.errors.required"> El monto es requerido </div>
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                              <label for="" class="form-label">Fecha de pago efectuado</label>
+                              <input type="date" class="form-control" id="" name="pagofecha" [(ngModel)]="pago.fechapago" 
+                              #fechaPago="ngModel" required/>
+                              <div *ngIf="fechaPago.invalid && (fechaPago.touched || fechaPago.dirty)" class="alert alert-danger">
+                                <div *ngIf="fechaPago.errors.required"> La fecha es requerida </div>
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                              <label for="" class="form-label">Modo de pago</label>
+                              <select name="modopago" class="form-select" [(ngModel)]="pago.modopago" 
+                              #modoPago="ngModel" required>
+                              <option *ngFor="let item of mediospago" [ngValue]="item">{{ item }}</option> 
+                              </select>
+                              <div *ngIf="modoPago.invalid && (modoPago.touched || modoPago.dirty)" class="alert alert-danger">
+                                <div *ngIf="modoPago.errors.required"> El modo de pago es requerido</div>
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                              <label for="" class="form-label">Fecha de vencimiento de cuota</label>
+                              <input type="date" class="form-control" id="" name="pagofechavencimiento" 
+                              #fechaVencimientoPago="ngModel" [(ngModel)]="pago.fechavencimiento" required/>
+                              <div *ngIf="fechaVencimientoPago.invalid && (fechaVencimientoPago.touched || fechaVencimientoPago.dirty)" class="alert alert-danger">
+                                <div *ngIf="fechaVencimientoPago.errors.required"> La fecha es requerida </div>
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkPago" name="pagocompletado" 
+                                #completadoPago="ngModel" [(ngModel)]="pago.completado">
+                                <label class="form-check-label" for="checkPago">
+                                  Completado
+                                </label>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                      <!--<button class="btn btn-green" (click)="imprimirComprobante()" >Imprimir</button>-->
+                      
+                        <button type="button" class="btn btn-green"
+                        (click)="agregarPago(pagoForm)" data-bs-dismiss="modal" *ngIf="accionPago=='new'"
+                        [disabled]="pagoForm.invalid" >Guardar</button>
+                        <button type="button" class="btn btn-green"
+                        (click)="updatePago(pagoForm)" data-bs-dismiss="modal" *ngIf="accionPago=='update'" 
+                        [disabled]="pagoForm.invalid">Modificar</button>
+                        <button type="button" class="btn btn-grey" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="card-body table-responsive col-12">
+              <table
+                class="table table-striped table-bordered table-hover"
+                [mfData]="pagos"
+                #mf6="mfDataTable"
+                [mfRowsOnPage]="5"
+              >
+                <thead>
+                  <tr class="bg-dark">
+                    <th style="width: 10%">
+                      <mfDefaultSorter by="monto">
+                        <span class="text-white text-decoration-none text-decoration-underline">Monto</span>
+                      </mfDefaultSorter>
+                    </th>
+                    <th style="width: 15%">
+                      <mfDefaultSorter by="fechapago">
+                        <span class="text-white text-decoration-none text-decoration-underline">Fecha del pago</span>
+                      </mfDefaultSorter>
+                    </th>
+                    <th style="width: 15%">
+                      <mfDefaultSorter by="modopago">
+                        <span class="text-white text-decoration-none text-decoration-underline">Modo de pago</span>
+                      </mfDefaultSorter>
+                    </th>
+                    <th style="width: 15%">
+                      <mfDefaultSorter by="fechavencimiento">
+                        <span class="text-white text-decoration-none text-decoration-underline">Fecha de vencimiento</span>
+                      </mfDefaultSorter>
+                    </th>
+                    <th style="width: 15%">
+                      <mfDefaultSorter by="completado">
+                        <span class="text-white text-decoration-none text-decoration-underline">Completado</span>
+                      </mfDefaultSorter>
+                    </th>
+                    <th style="width: 30%">
+                      <mfDefaultSorter by="completado">
+                        <span class="text-white text-decoration-none text-decoration-underline">Acciones</span>
+                      </mfDefaultSorter>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let pag of mf6.data">
+                    <td>{{ pag.monto | currency: 'AR$ '}}</td>
+                    <td>{{ pag.fechapago | date: 'dd/MM/yyyy' }}</td>
+                    <td>{{ pag.modopago }}</td>
+                    <td>{{ pag.fechavencimiento | date: 'dd/MM/yyyy' }}</td>
+                    <td>{{ pag.completado | traducirBool }}</td>
+                    <td>
+                      <button type="button" class="btn btn-dark" style="  margin-bottom: 10px;
+                      margin-right: 10px" data-bs-toggle="modal"
+                      data-bs-target="#modalImprimirPago" (click)="usarPagoImprimir(pag)">Imprimir</button>
+                      <button type="button" class="btn btn-green" data-bs-toggle="modal"
+                      data-bs-target="#modalAgregarPago" (click)="cargarPago(pag._id)">Modificar</button>
+                      <button class="btn btn-red" (click)="usarPagoSeleccionado(pag)" data-bs-toggle="modal"
+                      data-bs-target="#modalEliminarPago">Eliminar</button>
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="4">
+                      <mfBootstrapPaginator
+                        [rowsOnPageSet]="[5, 10, 25]"
+                      ></mfBootstrapPaginator>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+          </div>
+
+          <!-- modal imprimir pago -->
+          <div class="modal fade" id="modalImprimirPago" tabindex="-1" aria-labelledby="modalLabelImprimirPago"
+          aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                  <div class="modal-header text-white bg-dark">
+                      <h5 class="modal-title" id="modalLabelImprimirPago">Imprimir pago</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body" id="impresion">
+                      <div class="container-fluid col-10 offset-1 mb-3">
+                        <form class="row g-3" #pagoForm="ngForm">
+                          <div class="col-md-6">
+                            <label for="" class="form-label">Monto:</label>
+                            <div class="alert alert-primary text-dark" role="alert">
+                              {{pagoImp.monto | currency: 'AR$ '}}
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <label for="" class="form-label">Fecha de pago efectuado:</label>
+                            <div class="alert alert-primary text-dark" role="alert">
+                              {{pagoImp.fechapago | date: 'dd/MM/yyyy'}}
+                            </div>
+                          </div>
+                          <div class="col-md-5">
+                            <label for="" class="form-label">Modo de pago:</label>
+                            <div class="alert alert-primary text-dark" role="alert">
+                              {{pagoImp.modopago}}
+                            </div>
+                          </div>
+                          <div class="col-md-5">
+                            <label for="" class="form-label">Fecha de vencimiento de cuota:</label>
+                            <div class="alert alert-primary text-dark" role="alert">
+                              {{pagoImp.fechavencimiento | date: 'dd/MM/yyyy'}}
+                            </div>
+                            
+                          </div>
+                          <div class="col-md-2">
+                              <label for="" class="form-label">Completado: </label>
+                              <div class="alert alert-primary text-dark" role="alert">
+                                {{pagoImp.completado | traducirBool}}
+                              </div>
+                            </div>
+                          </form>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                    <!--<button class="btn btn-green" (click)="imprimirComprobante()" >Imprimir</button>-->
+                    <button type="button" class="btn btn-green" [useExistingCss]="true"
+                    printSectionId="impresion" printTitle="Comprobante de pago"
+                    ngxPrint>Imprimir</button>                      
+                    <button type="button" class="btn btn-grey" data-bs-dismiss="modal">Close</button>
+                  </div>
+              </div>
+          </div>
+          </div>
+
+          <!-- modal eliminar pago-->
+          <div class="modal fade" id="modalEliminarPago" tabindex="-1" aria-labelledby="modalLabelEliminarPago"
+          aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header bg-dark text-white">
+                      <h5 class="modal-title" id="modalLabelEliminarPago">Eliminar Pago</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <div class="container-fluid col-10 offset-1 mb-3">
+                          <div class="col-12">
+                           <h6>¿Está seguro/a de que desea eliminar el pago?</h6>
+                         </div>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-red"
+                          data-bs-dismiss="modal" (click)="eliminarPago()">Eliminar</button>
+                      <button type="button" class="btn btn-grey" data-bs-dismiss="modal">Close</button>
+                  </div>
+              </div>
+          </div>
+          </div>
+
+            </div>
+        </section>
+      </div>
+      <div
+        class="tab-pane fade cont"
+        id="rutinas"
+        role="tabpanel"
+        aria-labelledby="rutinas-tab"
+      >
+        <!--       Rutina             -->
+        <section>
+          <a
+            class="text-decoration-none"
+            data-bs-toggle="collapse"
+            href="#collapseRutina"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseExample"
+          >
+            <h3 class="categorie">Rutina</h3>
+          </a>
+          <div class="collapse show" id="collapseRutina">
+
+            <div class="text-center">
+              <button class="btn-green btn mt-2 mb-2" data-bs-toggle="modal"
+              data-bs-target="#modalAgregarRutina" (click)="nuevaRutina(rutinaForm)">Agregar Rutina</button>  
+            </div>
+            
+            <!-- modal Agregar/modificar rutina -->
+            <div class="modal fade" id="modalAgregarRutina" tabindex="-1" aria-labelledby="modalLabelAgregarRutina"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark text-white">
+                        <h5 class="modal-title" id="modalLabelAgregarRutina" *ngIf="accion=='new'">Nueva Rutina</h5>
+                        <h5 class="modal-title" id="modalLabelAgregarRutina" *ngIf="accion=='update'">Modificar Rutina</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid col-10 offset-1 mb-3">
+
+                          <form class="row g-3" #rutinaForm="ngForm">
+                            <div class="col-12">
+                              <label for="" class="form-label">Duración (minutos)</label>
+                              <input type="number" class="form-control" id="" name="rutinaDuracion" 
+                              #duracionRutina="ngModel" [(ngModel)]="rutina.duracion" control-duracion required/>
+                              <div *ngIf="duracionRutina.invalid && (duracionRutina.touched || duracionRutina.dirty)" class="alert alert-danger">
+                                <div *ngIf="duracionRutina.errors.controlDeDuracion"> Debe ingresar un número en el rango [5-99] y sin decimales </div>
+                                <div *ngIf="duracionRutina.errors.required"> La duración es requerida </div>
+                            </div>
+                            </div>
+                            <div class="col-12">
+                              <label for="" class="form-label">Grupo muscular</label>
+                              <input type="text" class="form-control" id="" name="rutinaGrupoM" 
+                              #grupoMuscRutina="ngModel" [(ngModel)]="rutina.grupomuscular" 
+                              minlength="3" required/>
+                              <div *ngIf="grupoMuscRutina.invalid && (grupoMuscRutina.touched || grupoMuscRutina.dirty)" class="alert alert-danger">
+                                <div *ngIf="grupoMuscRutina.errors.required"> El grupo muscular es requerido </div>
+                                <div *ngIf="grupoMuscRutina.errors.minlength"> Se requiere al menos {{grupoMuscRutina.errors.minlength.requiredLength}} caracteres </div>
+                            </div>
+                            </div>
+                          </form>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-green"
+                            data-bs-dismiss="modal" (click)="agregarRutina(rutinaForm)"
+                            *ngIf="accion=='new'" [disabled]="rutinaForm.invalid">Guardar</button>
+                        <button type="button" class="btn btn-green"
+                            data-bs-dismiss="modal" (click)="updateRutina(rutinaForm)" 
+                            *ngIf="accion=='update'" [disabled]="rutinaForm.invalid">Modificar</button>
+                        <button type="button" class="btn btn-grey" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+
+            <!-- tabla de rutinas -->
+            <div class="card-body table-responsive col-md-10 offset-md-1">
+              <table
+                class="table table-striped table-bordered table-hover table-borderless"
+                [mfData]="rutinas"
+                #mf3="mfDataTable"
+                [mfRowsOnPage]="5"
+              >
+                <thead>
+                  <tr class="bg-dark">
+                    <th style="width: 15%">
+                      <mfDefaultSorter by="duracion">
+                      <span class="text-white text-decoration-none text-decoration-underline">Duracion</span></mfDefaultSorter>
+                    </th>
+                    <th style="width: 25%">
+                      <mfDefaultSorter by="grupomuscular">
+                        <span class="text-white text-decoration-none text-decoration-underline">Grupo muscular</span></mfDefaultSorter>
+                    </th>
+                    <th style="width: 20%">
+                      <mfDefaultSorter by="ejercicios">
+                        <span class="text-white text-decoration-none text-decoration-underline">Ejercicios</span>
+                      </mfDefaultSorter>
+                    </th>
+                    <th style="width: 40%">
+                      <mfDefaultSorter by="acciones">
+                        <span class="text-white text-decoration-none text-decoration-underline">Acciones</span>
+                      </mfDefaultSorter>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let r of mf3.data">
+                    <td>{{ r.duracion}} minutos</td>
+                    <td>{{ r.grupomuscular }}</td>
+                    <td>
+                      <button class="btn btn-dark" data-bs-toggle="modal"
+                      data-bs-target="#modalMostrarEjercicios" (click)="getEjercicios(r._id)" (click)="usarRutinaSeleccionada(r)">Ver ejercicios</button>  
+                    </td>
+                    <td>
+                      <button class="btn btn-green" data-bs-toggle="modal"
+                      data-bs-target="#modalAgregarRutina" (click)="cargarRutina(r)" >Modificar rutina</button>
+                      <button class="btn btn-red" data-bs-toggle="modal"
+                      data-bs-target="#modalEliminarRutina" (click)="usarRutinaSeleccionada(r)">Eliminar</button></td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="4">
+                      <mfBootstrapPaginator
+                        [rowsOnPageSet]="[5, 10, 25]"
+                      ></mfBootstrapPaginator>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            
+            <!-- modal ver ejercicios de rutina -->
+            <div class="modal fade" id="modalMostrarEjercicios" tabindex="-1" aria-labelledby="modalLabelMostrarEjercicios"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark text-white">
+                        <h5 class="modal-title" id="modalLabelMostrarEjercicios">Ejercicios de rutina</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        
+                      <div class="text-center">
+                        <button class="btn-green btn mt-2 mb-2" data-bs-toggle="modal"
+                        data-bs-target="#modalAgregarEjercicio" (click)="nuevoEjercicio(ejercicioForm)">Agregar Ejercicio</button>
+                      </div>
+
+                      <div class="table-responsive">
+                        <table
+                          class="table table-striped table-bordered table-borderless table-hover"
+                          [mfData]="ejercicios"
+                          #mf4="mfDataTable"
+                          [mfRowsOnPage]="5"
+                        >
+                          <thead>
+                            <tr class="bg-dark">
+                              <th style="width: 30%">
+                                <mfDefaultSorter by="nombre">
+                                  <span class="text-white text-decoration-none text-decoration-underline">Nombre</span>
+                                </mfDefaultSorter>
+                              </th>
+                              <th style="width: 10%">
+                                <mfDefaultSorter by="series">
+                                  <span class="text-white text-decoration-none text-decoration-underline">Series</span>
+                                </mfDefaultSorter>
+                              </th>
+                              <th style="width: 20%">
+                                <mfDefaultSorter by="repeticiones">
+                                  <span class="text-white text-decoration-none text-decoration-underline">Repeticiones</span>
+                                </mfDefaultSorter>
+                              </th>
+                              <th style="width: 40%">
+                                <mfDefaultSorter by="accionesEjercicios">
+                                  <span class="text-white text-decoration-none text-decoration-underline">Acciones</span>
+                                </mfDefaultSorter>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let e of mf4.data">
+                              <td>{{ e.nombre}}</td>
+                              <td>{{ e.series }}</td>
+                              <td>{{ e.repeticiones}}</td>
+                              <td>
+                                <button class="btn btn-green" (click)="cargarEjercicio(e._id)"data-bs-toggle="modal"
+                                data-bs-target="#modalAgregarEjercicio" >Modificar Ejercicio</button>
+                                <button class="btn btn-red" (click)="usarEjercicioSeleccionado(e)" data-bs-toggle="modal"
+                                data-bs-target="#modalEliminarEjercicio">Eliminar</button></td>
+                            </tr>
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <td colspan="4">
+                                <mfBootstrapPaginator
+                                  [rowsOnPageSet]="[5, 10, 25]"
+                                ></mfBootstrapPaginator>
+                              </td>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-grey" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+
+            <!-- modal agregar/modificar ejercicio -->
+            <div class="modal fade" id="modalAgregarEjercicio" tabindex="-1" aria-labelledby="modalLabelAgregarEjercicio"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-light text-dark">
+                        <h5 class="modal-title" id="modalLabelEjercicio" *ngIf="accionEj=='new'">Nuevo Ejercicio</h5>
+                        <h5 class="modal-title" id="modalLabelEjercicio" *ngIf="accionEj=='update'">Modificar Ejercicio</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid col-10 offset-1 mb-3">
+
+                          <form class="row g-3" #ejercicioForm="ngForm">
+                            <div class="col-md-12">
+                              <label for="" class="form-label">Nombre</label>
+                              <input type="text" class="form-control" id="" name="ejercicioNombre" 
+                              #nombreEjercicio="ngModel" [(ngModel)]="ejercicio.nombre" 
+                              minlength="3" required/>
+                              <div *ngIf="nombreEjercicio.invalid && (nombreEjercicio.touched || nombreEjercicio.dirty)" class="alert alert-danger">
+                                <div *ngIf="nombreEjercicio.errors.required"> El nombre es requerido </div>
+                                <div *ngIf="nombreEjercicio.errors.minlength"> Se requiere al menos {{nombreEjercicio.errors.minlength.requiredLength}} caracteres </div>
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                              <label for="" class="form-label">Series</label>
+                              <input type="number" class="form-control" id="" name="ejercicioSeries" 
+                              #seriesEjercicio="ngModel" [(ngModel)]="ejercicio.series" control-seriesrep required/>
+                              <div *ngIf="seriesEjercicio.invalid && (seriesEjercicio.touched || seriesEjercicio.dirty)" class="alert alert-danger">
+                                <div *ngIf="seriesEjercicio.errors.controlDeSeriesRep"> Debe ingresar un numero dentro del rango [1-30] y sin decimales </div>
+                                <div *ngIf="seriesEjercicio.errors.required"> El número de series es requerido </div>
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                              <label for="" class="form-label">Repeticiones</label>
+                              <input type="number" class="form-control" id="" name="ejerciciosRep" 
+                              #repeticionesEjercicio="ngModel" [(ngModel)]="ejercicio.repeticiones" control-seriesrep required/>
+                              <div *ngIf="repeticionesEjercicio.invalid && (repeticionesEjercicio.touched || repeticionesEjercicio.dirty)" class="alert alert-danger">
+                                <div *ngIf="repeticionesEjercicio.errors.controlDeSeriesRep"> Debe ingresar un numero dentro del rango [1-30] y sin decimales </div>
+                                <div *ngIf="repeticionesEjercicio.errors.required"> El número de repeticiones es requerido </div>
+                            </div>
+                            </div>
+                          </form>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-green" *ngIf="accionEj=='new'"
+                            data-bs-dismiss="modal" (click)="agregarEjercicio(ejercicioForm)"
+                            [disabled]="ejercicioForm.invalid" >Guardar</button>
+                        <button type="button" class="btn btn-green" *ngIf="accionEj=='update'"
+                            data-bs-dismiss="modal" (click)="updateEjercicio(ejercicioForm)"
+                            [disabled]="ejercicioForm.invalid">Modificar</button>
+                        <button type="button" class="btn btn-grey" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+             <!-- modal eliminar rutina-->
+             <div class="modal fade" id="modalEliminarRutina" tabindex="-1" aria-labelledby="modalLabelEliminarRutina"
+             aria-hidden="true">
+             <div class="modal-dialog">
+                 <div class="modal-content">
+                     <div class="modal-header bg-dark text-white">
+                         <h5 class="modal-title" id="modalLabelEliminarRutina">Eliminar Rutina</h5>
+                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                     </div>
+                     <div class="modal-body">
+                         <div class="container-fluid col-10 offset-1 mb-3">
+                             <div class="col-12">
+                              <h6>¿Está seguro/a de que desea eliminar la rutina?</h6>
+                            </div>
+                         </div>
+                     </div>
+                     <div class="modal-footer">
+                         <button type="button" class="btn btn-red"
+                             data-bs-dismiss="modal" (click)="eliminarRutina()">Eliminar</button>
+                         <button type="button" class="btn btn-grey" data-bs-dismiss="modal">Close</button>
+                     </div>
+                 </div>
+             </div>
+             </div>
+
+             <!-- modal eliminar ejercicio-->
+             <div class="modal fade" id="modalEliminarEjercicio" tabindex="-1" aria-labelledby="modalLabelEliminarEjercicio"
+             aria-hidden="true">
+             <div class="modal-dialog">
+                 <div class="modal-content">
+                     <div class="modal-header bg-light text-dark">
+                         <h5 class="modal-title" id="modalLabelEliminarEjercicio">Eliminar Ejercicio</h5>
+                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                     </div>
+                     <div class="modal-body">
+                         <div class="container-fluid col-10 offset-1 mb-3">
+                             <div class="col-12">
+                              <h6>¿Está seguro/a de que desea eliminar el ejercicio?</h6>
+                            </div>
+                         </div>
+                     </div>
+                     <div class="modal-footer">
+                         <button type="button" class="btn btn-red"
+                             data-bs-dismiss="modal" (click)="eliminarEjercicio()">Eliminar</button>
+                         <button type="button" class="btn btn-grey" data-bs-dismiss="modal">Close</button>
+                     </div>
+                 </div>
+             </div>
+             </div>
+
+          </div>
+        </section>
+      </div>
+      <div
+        class="tab-pane fade cont"
+        id="progreso"
+        role="tabpanel"
+        aria-labelledby="progreso-tab"
+      >
+        <!--           Seccion Progreso            -->
+        <section>
+          <a
+            class="text-decoration-none"
+            data-bs-toggle="collapse"
+            href="#collapseProgreso2"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseExample"
+          >
+            <h3 class="categorie">Progreso</h3>
+          </a>
+          <div class="collapse show" id="collapseProgreso2">
+            
+              
+                <div class="text-center">
+                  <button class="btn-green btn mt-2 mb-2" data-bs-toggle="modal"
+                  data-bs-target="#modalAgregarProgreso" (click)="nuevoProgreso(progresoForm)">Agregar progreso</button>  
+                </div>
+                
+                <!-- modal Agregar/modificar progreso -->
+                <div class="modal fade" id="modalAgregarProgreso" tabindex="-1" aria-labelledby="modalLabelAgregarProgreso"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg  modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header bg-dark text-white">
+                            <h5 class="modal-title" id="modalLabelAgregarProgreso" *ngIf="accionProg=='new'">Nuevo Progreso</h5>
+                            <h5 class="modal-title" id="modalLabelAgregarProgreso" *ngIf="accionProg=='update'">Modificar Progreso</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid col-10 offset-1 mb-3">
+    
+                              <form class="row g-3" #progresoForm="ngForm">
+                                <div class="col-md-6">
+                                  <label for="" class="form-label">Fecha</label>
+                                  <input type="date" class="form-control" id="" name="fechaProg" 
+                                  #fechaProgreso="ngModel" [(ngModel)]="progreso.fecha" required/>
+                                  <div *ngIf="fechaProgreso.invalid && (fechaProgreso.touched || fechaProgreso.dirty)" class="alert alert-danger">
+                                    <div *ngIf="fechaProgreso.errors.required"> La fecha es requerida </div>
+                                </div>
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="" class="form-label">Control de peso</label>
+                                  <input
+                                    type="number" class="form-control" id="" placeholder="Peso en Kg" name="pesoProg" 
+                                    #pesoProgreso="ngModel" [(ngModel)]="progreso.peso" control-peso required/>
+                                    <div *ngIf="pesoProgreso.invalid && (pesoProgreso.touched || pesoProgreso.dirty)" class="alert alert-danger">
+                                      <div *ngIf="pesoProgreso.errors.controlDePeso"> Debe ingresar un peso en el rango [30-199] y hasta dos decimales</div>
+                                      <div *ngIf="pesoProgreso.errors.required"> El peso es requerido </div>
+                                  </div>
+                                </div>        
+                                <div class="col-12">
+                                  <label for="" class="form-label">Evolucion del aspecto fisico</label>
+                                  <input id="" type="file" class="form-control" alife-file-to-base64 accept=".png, .jpg, .jpeg" (onFileChanged)="onFileChanged($event)" 
+                                  name="imagenProgreso" required/>
+                                </div>
+                                <div class="col-12">
+                                  <label for="" class="form-label">Tipo de dieta</label>
+                                  <textarea class="form-control w-100" name="" id="" cols="30" rows="3" 
+                                  name="dietaProg" [(ngModel)]="progreso.dieta" #dietaProgreso="ngModel" 
+                                  minlength="5" required></textarea>
+                                  <div *ngIf="dietaProgreso.invalid && (dietaProgreso.touched || dietaProgreso.dirty)" class="alert alert-danger">
+                                    <div *ngIf="dietaProgreso.errors.required"> La dieta es requerida </div>
+                                    <div *ngIf="dietaProgreso.errors.minlength"> Se requiere al menos {{dietaProgreso.errors.minlength.requiredLength}} caracteres </div>
+                                </div>
+                                </div>
+                                <div class="col-12">
+                                  <label for="" class="form-label">Observaciones</label>
+                                  <textarea class="form-control w-100" name="" id="" cols="30" rows="3"
+                                  name="observacionesProg" [(ngModel)]="progreso.observaciones"
+                                  #observacionesProgreso="ngModel" minlength="5" required></textarea>
+                                  <div *ngIf="observacionesProgreso.invalid && (observacionesProgreso.touched || observacionesProgreso.dirty)" class="alert alert-danger">
+                                    <div *ngIf="observacionesProgreso.errors.required"> Las observaciones son requeridas </div>
+                                    <div *ngIf="observacionesProgreso.errors.minlength"> Se requiere al menos {{observacionesProgreso.errors.minlength.requiredLength}} caracteres </div>
+                                </div>
+                                </div>
+                               
+                              </form>
+    
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-green" *ngIf="accionProg=='new'"
+                                data-bs-dismiss="modal" (click)="agregarProgreso(progresoForm)" 
+                                [disabled]="progresoForm.invalid || imgIng==false" >Guardar</button>
+                            <button type="button" class="btn btn-green" *ngIf="accionProg=='update'"
+                                data-bs-dismiss="modal" (click)="updateProgreso(progresoForm)"
+                                [disabled]="progresoForm.invalid">Modificar</button>
+                            <button type="button" class="btn btn-grey" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+  
+            <div class="card-body table-responsive-sm col-md-12">
+              <table
+                class="table table-striped table-bordered table-hover"
+                [mfData]="progresos"
+                #mf2="mfDataTable"
+                [mfRowsOnPage]="5"
+              >
+                <thead>
+                  <tr class="bg-dark">
+                    <th style="width: 10%">
+                      <mfDefaultSorter by="fecha">
+                        <span class="text-white text-decoration-none text-decoration-underline">Fecha</span>
+                      </mfDefaultSorter>
+                    </th>
+                    <th style="width: 10%">
+                      <mfDefaultSorter by="peso">
+                        <span class="text-white text-decoration-none text-decoration-underline">Peso</span>
+                      </mfDefaultSorter>
+                    </th>
+                    <th style="width: 20%">
+                      <mfDefaultSorter by="dieta">
+                        <span class="text-white text-decoration-none text-decoration-underline">Dieta</span>
+                      </mfDefaultSorter>
+                    </th>
+                    <th style="width: 20%">
+                      <mfDefaultSorter by="observaciones">
+                        <span class="text-white text-decoration-none text-decoration-underline">Observaciones</span>
+                      </mfDefaultSorter>
+                    </th>
+                    <th style="width: 20%">
+                      <mfDefaultSorter by="foto">
+                        <span class="text-white text-decoration-none text-decoration-underline">Foto</span>
+                      </mfDefaultSorter>
+                    </th>
+                    <th style="width: 20%">
+                      <mfDefaultSorter by="acciones">
+                        <span class="text-white text-decoration-none text-decoration-underline">Acciones</span>
+                      </mfDefaultSorter>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let p of mf2.data">
+                    <td>{{ p.fecha | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{ p.peso}} kg</td>
+                    <td>{{ p.dieta}}</td>
+                    <td>{{ p.observaciones }}</td>
+                    <td><img src="{{p.foto}}" style="width: 100%;" alt=""></td>
+                    <td>
+                      <button class="btn btn-green" data-bs-toggle="modal"
+                      data-bs-target="#modalAgregarProgreso" (click)="cargarProgreso(p._id)" >Modificar</button>
+                      <button class="btn btn-red" data-bs-toggle="modal"
+                      data-bs-target="#modalEliminarProgreso" (click)="usarProgresoSeleccionado(p)">Eliminar</button>
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="4">
+                      <mfBootstrapPaginator
+                        [rowsOnPageSet]="[5, 10, 25]"
+                      ></mfBootstrapPaginator>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+
+              <!-- modal eliminar progreso-->
+             <div class="modal fade" id="modalEliminarProgreso" tabindex="-1" aria-labelledby="modalLabelEliminarProgreso"
+             aria-hidden="true">
+             <div class="modal-dialog">
+                 <div class="modal-content">
+                     <div class="modal-header bg-dark text-white">
+                         <h5 class="modal-title" id="modalLabelEliminarProgreso">Eliminar Progreso</h5>
+                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                     </div>
+                     <div class="modal-body">
+                         <div class="container-fluid col-10 offset-1 mb-3">
+                             <div class="col-12">
+                              <h6>¿Está seguro/a de que desea eliminar el progreso?</h6>
+                            </div>
+                         </div>
+                     </div>
+                     <div class="modal-footer">
+                         <button type="button" class="btn btn-red"
+                             data-bs-dismiss="modal" (click)="eliminarProgreso()">Eliminar</button>
+                         <button type="button" class="btn btn-grey" data-bs-dismiss="modal">Close</button>
+                     </div>
+                 </div>
+             </div>
+             </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div
+        class="tab-pane fade cont"
+        id="asistencias"
+        role="tabpanel"
+        aria-labelledby="asistencias-tab"
+      >
+        <!--          ver asistencia del alumno      -->
+        <section>
+          <a
+            class="text-decoration-none"
+            data-bs-toggle="collapse"
+            href="#collapseAsistencia"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseExample"
+          >
+            <h3 class="categorie">Asistencia del Alumno</h3>
+          </a>
+          <div class="collapse show" id="collapseAsistencia">
+            <div class="text-center">
+              <button class="btn-green btn mt-2 mb-2" data-bs-toggle="modal"
+              data-bs-target="#modalAgregarAsistencia" (click)="nuevaAsistencia(asistenciaForm)">Agregar asistencia</button>  
+            </div>
+            
+            <!-- modal Agregar/modificar asistencia -->
+            <div class="modal fade" id="modalAgregarAsistencia" tabindex="-1" aria-labelledby="modalLabelAgregarAsistencia"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header text-white bg-dark">
+                        <h5 class="modal-title" id="modalLabelAgregarAsistencia" *ngIf="accionAsist=='new'">Nueva Asistencia</h5>
+                        <h5 class="modal-title" id="modalLabelAgregarAsistencia" *ngIf="accionAsist=='update'">Modificar Asistencia</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid col-10 offset-1 mb-3">
+
+                          <form class="row g-3" #asistenciaForm="ngForm">
+                            <div class="col-md-6">
+                              <label for="" class="form-label">Fecha</label>
+                              <input type="date" class="form-control" id="" name="asistfecha" 
+                              #fechaAsistencia="ngModel" [(ngModel)]="asistencia.fecha" required/>
+                              <div *ngIf="fechaAsistencia.invalid && (fechaAsistencia.touched || fechaAsistencia.dirty)" class="alert alert-danger">
+                                <div *ngIf="fechaAsistencia.errors.required"> La fecha es requerida </div>
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                              <label for="" class="form-label">Hora</label>
+                              <input type="time" class="form-control" id="" name="asisthora" 
+                              #horaAsistencia="ngModel" [(ngModel)]="asistencia.hora" required/>
+                              <div *ngIf="horaAsistencia.invalid && (horaAsistencia.touched || horaAsistencia.dirty)" class="alert alert-danger">
+                                <div *ngIf="horaAsistencia.errors.required"> La hora es requerida </div>
+                            </div>
+                            </div>
+                            
+                          </form>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-green" *ngIf="accionAsist=='new'"
+                            data-bs-dismiss="modal" (click)="agregarAsistencia(asistenciaForm)"
+                            [disabled]="asistenciaForm.invalid">Guardar</button>
+                        <button type="button" class="btn btn-green" *ngIf="accionAsist=='update'"
+                            data-bs-dismiss="modal" (click)="updateAsistencia(asistenciaForm)"
+                            [disabled]="asistenciaForm.invalid">Modificar</button>
+                        <button type="button" class="btn btn-grey" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <!-- modal eliminar asistencia-->
+            <div class="modal fade" id="modalEliminarAsistencia" tabindex="-1" aria-labelledby="modalLabelEliminarAsistencia"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark text-white">
+                        <h5 class="modal-title" id="modalLabelEliminarAsistencia">Eliminar Asistencia</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid col-10 offset-1 mb-3">
+                            <div class="col-12">
+                             <h6>¿Está seguro/a de que desea eliminar la asistencia?</h6>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-red"
+                            data-bs-dismiss="modal" (click)="eliminarAsistencia()">Eliminar</button>
+                        <button type="button" class="btn btn-grey" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+            
+            <div class="card-body table-responsive col-md-8 offset-md-2">
+              <table
+                class="table table-striped table-bordered table-hover"
+                [mfData]="asistencias"
+                #mf="mfDataTable"
+                [mfRowsOnPage]="5"
+              >
+                <thead>
+                  <tr class="bg-dark">
+                    <th style="width: 30%">
+                      <mfDefaultSorter by="fecha">
+                        <span class="text-white text-decoration-none text-decoration-underline">Día</span>
+                      </mfDefaultSorter>
+                    </th>
+                    <th style="width: 30%">
+                      <mfDefaultSorter by="hora">
+                        <span class="text-white text-decoration-none text-decoration-underline">Hora</span>
+                      </mfDefaultSorter>
+                    </th>
+                    <th style="width: 30%">
+                      <mfDefaultSorter by="acciones">
+                        <span class="text-white text-decoration-none text-decoration-underline">Acciones</span>
+                      </mfDefaultSorter>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let asist of mf.data">
+                    <td>{{ asist.fecha | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{ asist.hora }}</td>
+                    <td>
+                      <button type="button" class="btn btn-green" data-bs-toggle="modal"
+                      data-bs-target="#modalAgregarAsistencia" (click)="cargarAsistencia(asist._id)">Modificar</button>
+                      <button class="btn btn-red" (click)="usarAsistenciaSeleccionada(asist)" data-bs-toggle="modal"
+                      data-bs-target="#modalEliminarAsistencia">Eliminar</button></td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="4">
+                      <mfBootstrapPaginator
+                        [rowsOnPageSet]="[5, 10, 25]"
+                      ></mfBootstrapPaginator>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div
+        class="tab-pane fade cont"
+        id="usuario"
+        role="tabpanel"
+        aria-labelledby="usuario-tab"
+      >
+        <!--       Seccion usuario      -->
+        <section>
+          <a
+            class="text-decoration-none"
+            data-bs-toggle="collapse"
+            href="#collapseUsuario"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseExample"
+          >
+            <h3 class="categorie">Usuario</h3>
+          </a>
+          <br />
+          <div class="collapse show" id="collapseUsuario">
+            <div class="col-md-10 offset-md-1 cuadro bg-light">
+              <br />
+              <form class="row g-3 col-10 offset-1 " #usuarioForm="ngForm">
+                <div class="col-md-4">  
+                  <label for="" class="form-label">Nombre de Usuario</label>
+                  <input type="text" class="form-control" id="" name="usuarionombre" [(ngModel)]="usuario.usuario" 
+                  #username="ngModel" minlength="3" [disabled]="deseaagregar==false" required/>
+                  <div *ngIf="username.invalid && (username.touched || username.dirty)" class="alert alert-danger">
+                    <div *ngIf="username.errors.required"> Ingrese un nombre de usuario </div>
+                    <div *ngIf="username.errors.minlength"> Se requieren al menos {{username.errors.minlength.requiredLength}} caracteres </div>
+                  </div>
+  
+                </div>
+                <div class="col-md-4">
+                  <label for="" class="form-label">Contraseña</label>
+                  <input type="password" class="form-control" id="" name="usuariopwd" [(ngModel)]="usuario.password" #pashword="ngModel" minlength="6" required/>
+                  <div *ngIf="pashword.invalid && (pashword.touched || pashword.dirty)" class="alert alert-danger">
+                    <div *ngIf="pashword.errors.required"> Ingrese una contraseña </div>
+                    <div *ngIf="pashword.errors.minlength"> Se requieren al menos {{pashword.errors.minlength.requiredLength}} caracteres </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <label for="" class="form-label">Perfil</label>
+                  <select class="form-select" aria-label="Disabled select example" id="" name="usuarioperfil" [(ngModel)]="usuario.perfil" disabled>
+                    <option value="alumno">Alumno</option>
+                  </select>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="" name="usuarioactivo" [(ngModel)]="usuario.activo">
+                    <label class="form-check-label" for="">
+                      Activo
+                    </label>
+                  </div>
+                </div>
+                <div class="col-12 buttons">
+                  <button type="button" class="btn btn-green" (click)="agregarUsuario(usuarioForm)" *ngIf="deseaagregar" [disabled]="deshabilitar || usuarioForm.invalid">Guardar</button>
+                  <button type="button" class="btn btn-green" data-bs-toggle="modal"
+                  data-bs-target="#modalModificarUsuario" *ngIf="deseaagregar == false" [disabled]="deshabilitar || usuarioForm.invalid">Modificar</button>
+                  <!--<button type="button" class="btn btn-danger" (click)="eliminarUsuario(usuarioForm)" *ngIf="deseaagregar == false">Eliminar</button>-->
+                  <button class="btn btn-red" data-bs-toggle="modal"
+                        data-bs-target="#modalEliminarUsuario" *ngIf="deseaagregar == false" [disabled]="deshabilitar">Eliminar</button>
+                  <!--<button class="btn btn-grey">Modificar</button>-->
+                </div>
+                <!-- modal eliminar usuario-->
+            <div class="modal fade" id="modalEliminarUsuario" tabindex="-1" aria-labelledby="modalLabelEliminarUsuario"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark text-white">
+                        <h5 class="modal-title" id="modalLabelEliminarUsuario">Eliminar Usuario</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid col-10 offset-1 mb-3">
+                            <div class="col-12">
+                             <h6>¿Está seguro/a de que desea eliminar el usuario?</h6>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-red"
+                            data-bs-dismiss="modal" (click)="eliminarUsuario(usuarioForm)">Eliminar</button>
+                        <button type="button" class="btn btn-grey" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+  
+            <!-- modal modificar usuario-->
+            <div class="modal fade" id="modalModificarUsuario" tabindex="-1" aria-labelledby="modalLabelModificarUsuario"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark text-white">
+                        <h5 class="modal-title" id="modalLabelModificarUsuario">Modificar Usuario</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid col-10 offset-1 mb-3">
+                            <div class="col-12">
+                             <h6>¿Está seguro/a de que desea modificar el usuario?</h6>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-green"
+                            data-bs-dismiss="modal" (click)="actualizarUsuario(usuarioForm)">Modificar</button>
+                        <button type="button" class="btn btn-grey" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+              </form>
+              <br /><br />
+            </div>
+
+            
+          </div>
+          
+        </section>
+      </div>
+      <br /><br />
+    </div>
+  </section>
+</main>

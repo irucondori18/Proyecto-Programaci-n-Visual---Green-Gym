@@ -1,0 +1,30 @@
+.footer {
+  padding: 15px 10px 0px;
+  background-color: #2ec400;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
+.social-link {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-size: 30px;
+  margin: 0px 10px;
+  transition: 500ms;
+}
+.social-link:hover {
+  transform: scale3d(1.7, 1.7, 1.7);
+  transition: 500ms;
+}
+.social-link.twitter {
+  background-image: url("../../../assets/images/twitter.svg");
+}
+.social-link.facebook {
+  background-image: url("../../../assets/images/facebook.svg");
+}
+
+.social-link.instagram {
+  background-image: url("../../../assets/images/instagram.svg");
+}

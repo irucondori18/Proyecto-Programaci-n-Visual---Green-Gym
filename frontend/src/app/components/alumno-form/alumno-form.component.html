@@ -1,0 +1,106 @@
+<section>
+    <a
+      class="text-decoration-none"
+      data-bs-toggle="collapse"
+      href="#collapseDatos"
+      role="button"
+      aria-expanded="false"
+      aria-controls="collapseExample"
+    >
+      <h3 class="categorie">Datos del Alumno</h3>
+    </a>
+    <div class="collapse show" id="collapseDatos">
+      <div class="col-md-10 offset-md-1 cuadro bg-light">
+        <br />
+        <form class="row g-3 col-10 offset-1" #alumnoForm="ngForm">
+          <div class="col-md-6">
+            <label for="" class="form-label">Apellido/s</label>
+            <input type="text" class="form-control" id="" name="apellido" [(ngModel)]="alumno.apellido" 
+            #apellidoAlumno="ngModel" minlength="3" required/>
+            <div *ngIf="apellidoAlumno.invalid && (apellidoAlumno.touched || apellidoAlumno.dirty)" class="alert alert-danger">
+              <div *ngIf="apellidoAlumno.errors.required"> El apellido es requerido </div>
+              <div *ngIf="apellidoAlumno.errors.minlength"> Se requiere al menos {{apellidoAlumno.errors.minlength.requiredLength}} caracteres </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="" class="form-label">Nombre/s</label>
+            <input type="text" class="form-control" id="" name="nombre" [(ngModel)]="alumno.nombre"
+            #nombreAlumno="ngModel" minlength="3" required/>
+            <div *ngIf="nombreAlumno.invalid && (nombreAlumno.touched || nombreAlumno.dirty)" class="alert alert-danger">
+              <div *ngIf="nombreAlumno.errors.required"> El nombre es requerido </div>
+              <div *ngIf="nombreAlumno.errors.minlength"> Se requiere al menos {{nombreAlumno.errors.minlength.requiredLength}} caracteres </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="" class="form-label">Fecha de nacimiento</label>
+            <input type="date" class="form-control" id="" name="fechanac" [(ngModel)]="alumno.fechanac"
+            #fechanacAlumno="ngModel" required/>
+            <div *ngIf="fechanacAlumno.invalid && (fechanacAlumno.touched || fechanacAlumno.dirty)" class="alert alert-danger">
+              <div *ngIf="fechanacAlumno.errors.required"> La fecha de nacimiento es requerida </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="" class="form-label">Número de DNI</label>
+            <input type="number" class="form-control" id="" name="dni" [(ngModel)]="alumno.dni"
+            #dniAlumno="ngModel" control-dni required/>
+            <div *ngIf="dniAlumno.invalid && (dniAlumno.touched || dniAlumno.dirty)" class="alert alert-danger">
+              <div *ngIf="dniAlumno.errors.controlDeDni"> Debe ingresar un número de 7 u 8 dígitos</div>
+              <div *ngIf="dniAlumno.errors.required"> El DNI es requerido</div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="" class="form-label">Domicilio</label>
+            <input type="text" class="form-control" id="" name="domicilio" [(ngModel)]="alumno.domicilio"
+            #domicilioAlumno="ngModel" minlength="5" required/>
+            <div *ngIf="domicilioAlumno.invalid && (domicilioAlumno.touched || domicilioAlumno.dirty)" class="alert alert-danger">
+              <div *ngIf="domicilioAlumno.errors.required"> El domicilio es requerido </div>
+              <div *ngIf="domicilioAlumno.errors.minlength"> Se requiere al menos {{domicilioAlumno.errors.minlength.requiredLength}} caracteres </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="" name="email" [(ngModel)]="alumno.email"
+            #emailAlumno="ngModel" control-email required/>
+            <div *ngIf="emailAlumno.invalid && (emailAlumno.touched || emailAlumno.dirty)" class="alert alert-danger">
+              <div *ngIf="emailAlumno.errors.controlDeEmail"> Debe ingresar un mail con un formato similar a "ejemplo@correo.com.ar"</div>
+              <div *ngIf="emailAlumno.errors.required"> El mail es requerido</div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <label for="" class="form-label">Numero de Celular</label>
+            <input type="tel" class="form-control" id="" name="celular" [(ngModel)]="alumno.celular"
+            #celularAlumno="ngModel" control-celular required/>
+            <div *ngIf="celularAlumno.invalid && (celularAlumno.touched || celularAlumno.dirty)" class="alert alert-danger">
+              <div *ngIf="celularAlumno.errors.controlDeCelular"> Debe ingresar un celular con el formato "388-1234567"</div>
+              <div *ngIf="celularAlumno.errors.required"> El celular es requerido</div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="inputState" class="form-label">Tipo de Plan</label>
+            <select class="form-select" name="plan" [(ngModel)]="alumno.plan"
+            #planAlumno="ngModel" required>
+              <option *ngFor="let p of planes" [ngValue]="p">{{p.tipo}} - {{p.frecuencia}}</option>
+            </select>
+            <div *ngIf="planAlumno.invalid && (planAlumno.touched || planAlumno.dirty)" class="alert alert-danger">
+              <div *ngIf="planAlumno.errors.required"> El plan es requerido </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <label for="" class="form-label">Fecha de inicio</label>
+            <input type="date" class="form-control" id="" name="fechainicio" [(ngModel)]="alumno.fechainicio"
+            #fechainicioAlumno="ngModel" required/>
+            <div *ngIf="fechainicioAlumno.invalid && (fechainicioAlumno.touched || fechainicioAlumno.dirty)" class="alert alert-danger">
+              <div *ngIf="fechainicioAlumno.errors.required"> La fecha de inicio es requerida </div>
+            </div>
+          </div>
+          <div class="col-12 buttons">
+            <button type="button" class="btn btn-green" (click)="agregarAlumno()" [disabled]="alumnoForm.invalid">Guardar</button>
+            <button class="btn btn-red" (click)="volver()">Volver</button>
+          </div>
+        </form>
+        <br /><br />
+      </div>
+      <br />
+      <br />
+    </div>
+  </section>
